@@ -59,55 +59,55 @@ class AppConfig:
     
     # Project Categories
     PROJECT_CATEGORIES = [
-        "Web Geliştirme", 
-        "Mobil Uygulama", 
-        "Veri Bilimi", 
-        "Yapay Zeka/Makine Öğrenimi", 
-        "Oyun Geliştirme", 
-        "IoT (Nesnelerin İnterneti)", 
-        "Siber Güvenlik", 
-        "Blok Zinciri", 
-        "Artırılmış/Sanal Gerçeklik", 
-        "Diğer"
+        "Web Development", 
+        "Mobile Application", 
+        "Data Science", 
+        "Artificial Intelligence/Machine Learning", 
+        "Game Development", 
+        "IoT (Internet of Things)", 
+        "Cyber Security", 
+        "Blockchain", 
+        "Augmented/Virtual Reality", 
+        "Other"
     ]
     
     # Difficulty Levels
-    DIFFICULTY_LEVELS = ["Başlangıç", "Orta", "İleri"]
+    DIFFICULTY_LEVELS = ["Beginner", "Intermediate", "Advanced"]
     
     # Project Types
-    PROJECT_TYPES = ["Kişisel", "Takım", "Akademik"]
+    PROJECT_TYPES = ["Personal", "Team", "Academic"]
     
     # Areas of Interest
     AREAS_OF_INTEREST = [
-        "Web Geliştirme",
-        "Mobil Uygulama Geliştirme",
-        "Veri Bilimi",
-        "Yapay Zeka/Makine Öğrenimi",
-        "Oyun Geliştirme",
-        "IoT (Nesnelerin İnterneti)",
-        "Siber Güvenlik",
-        "Blok Zinciri",
-        "Artırılmış/Sanal Gerçeklik",
-        "Robotik",
-        "Bulut Bilişim",
+        "Web Development",
+        "Mobile Application Development",
+        "Data Science",
+        "Artificial Intelligence/Machine Learning",
+        "Game Development",
+        "IoT (Internet of Things)",
+        "Cyber Security",
+        "Blockchain",
+        "Augmented/Virtual Reality",
+        "Robotics",
+        "Cloud Computing",
         "DevOps",
-        "Gömülü Sistemler",
-        "Ağ Teknolojileri",
-        "Veritabanı Yönetimi",
-        "UI/UX Tasarımı"
+        "Embedded Systems",
+        "Network Technologies",
+        "Database Management",
+        "UI/UX Design"
     ]
     
-    # Error Messages (in Turkish)
+    # Error Messages (in English)
     ERROR_MESSAGES = {
-        "api_key_missing": "API anahtarı eksik. Lütfen .env dosyasına GEMINI_API_KEY ekleyin.",
-        "api_error": "API hatası oluştu: {error}",
-        "input_too_short": "Lütfen daha fazla bilgi girin (en az {min_length} karakter).",
-        "input_too_long": "Girdi çok uzun (maksimum {max_length} karakter).",
-        "file_too_large": "Dosya çok büyük (maksimum {max_size}MB).",
-        "invalid_file_type": "Geçersiz dosya türü. İzin verilen türler: {allowed_types}",
-        "rate_limit": "Çok fazla istek gönderildi. Lütfen {retry_after} saniye sonra tekrar deneyin.",
-        "general_error": "Bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
-        "quota_limit": "API kota sınırına ulaşıldı. Alternatif model kullanılıyor."
+        "api_key_missing": "API key is missing. Please add GEMINI_API_KEY to your .env file.",
+        "api_error": "API error occurred: {error}",
+        "input_too_short": "Please enter more information (at least {min_length} characters).",
+        "input_too_long": "Input is too long (maximum {max_length} characters).",
+        "file_too_large": "File is too large (maximum {max_size}MB).",
+        "invalid_file_type": "Invalid file type. Allowed types: {allowed_types}",
+        "rate_limit": "Too many requests sent. Please try again after {retry_after} seconds.",
+        "general_error": "An error occurred. Please try again later.",
+        "quota_limit": "API quota limit reached. Using alternative model."
     }
     
     @classmethod

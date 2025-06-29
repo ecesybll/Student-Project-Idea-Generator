@@ -71,9 +71,9 @@ class GeminiClient:
         # Map safety level to threshold
         safety_mapping = {
             "Minimum (BLOCK_NONE)": HarmBlockThreshold.BLOCK_NONE,
-            "Düşük (BLOCK_ONLY_HIGH)": HarmBlockThreshold.BLOCK_ONLY_HIGH,
-            "Orta (BLOCK_MEDIUM_AND_ABOVE)": HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-            "Yüksek (BLOCK_LOW_AND_ABOVE)": HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
+            "Low (BLOCK_ONLY_HIGH)": HarmBlockThreshold.BLOCK_ONLY_HIGH,
+            "Medium (BLOCK_MEDIUM_AND_ABOVE)": HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+            "High (BLOCK_LOW_AND_ABOVE)": HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
         }
         
         safety_threshold = safety_mapping.get(safety_level, HarmBlockThreshold.BLOCK_NONE)
@@ -221,12 +221,12 @@ class GeminiClient:
                 result_text = response.text
             except ValueError:
                 logger.warning(f"Response was empty, likely due to safety filters. Finish reason: {response.candidates[0].finish_reason if response.candidates else 'N/A'}")
-                return "Üretilen içerik güvenlik politikalarını ihlal ettiği için engellendi. Lütfen isteğinizi değiştirip tekrar deneyin."
+                return "The generated content was blocked due to safety policies. Please modify your request and try again."
 
             # Add a note if fallback model was used
             if self._fallback_used:
-                fallback_notice = "\n\n---\n*Not: Bu içerik alternatif bir model (gemini-1.5-flash) kullanılarak oluşturulmuştur. " \
-                                 "Ana model kota sınırlaması nedeniyle kullanılamadı.*"
+                fallback_notice = "\n\n---\n*Note: This content was generated using an alternative model (gemini-1.5-flash). " \
+                                 "The main model could not be used due to quota limitations.*"
                 result_text += fallback_notice
                 
             return result_text
@@ -259,12 +259,12 @@ class GeminiClient:
                 result_text = response.text
             except ValueError:
                 logger.warning(f"Chat response was empty, likely due to safety filters. Finish reason: {response.candidates[0].finish_reason if response.candidates else 'N/A'}")
-                return "Yanıt, güvenlik politikalarını ihlal ettiği için engellendi. Lütfen sorunuzu değiştirip tekrar deneyin."
+                return "The response was blocked due to safety policies. Please modify your question and try again."
 
             # Add a note if fallback model was used
             if self._fallback_used:
-                fallback_notice = "\n\n---\n*Not: Bu yanıt alternatif bir model (gemini-1.5-flash) kullanılarak oluşturulmuştur. " \
-                                 "Ana model kota sınırlaması nedeniyle kullanılamadı.*"
+                fallback_notice = "\n\n---\n*Note: This response was generated using an alternative model (gemini-1.5-flash). " \
+                                 "The main model could not be used due to quota limitations.*"
                 result_text += fallback_notice
                 
             return result_text

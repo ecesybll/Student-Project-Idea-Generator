@@ -89,233 +89,232 @@ def create_project_prompt(user_inputs: Dict[str, Any]) -> str:
     detailed_info = user_inputs.get('detailed_info', '')
     
     # Get complexity description from constants
-    complexity_desc = COMPLEXITY_DESCRIPTIONS.get(complexity, "Belirtilmemiş")
+    complexity_desc = COMPLEXITY_DESCRIPTIONS.get(complexity, "Not specified")
     
-    # Format the comprehensive prompt in Turkish
+    # Format the comprehensive prompt in English
     prompt = f"""
-    Sen 15+ yıl deneyimli bir senior yazılım mimarı, proje yöneticisi ve teknik mentorsun. Öğrenciler için sadece proje fikri değil, tam bir proje rehberi ve uygulama planı oluşturman gerekiyor. Yanıtın profesyonel, detaylı ve uygulanabilir olmalı.
-    
-    ## Öğrenci Profili ve İhtiyaçları:
-    - **Detaylı Proje Açıklaması:** {detailed_info if detailed_info else 'Öğrenci genel bir proje fikri arıyor'}
-    - **Hedeflenen Kategoriler:** {', '.join(categories) if categories else 'Açık'}
-    - **İlgi Alanları:** {', '.join(interests) if interests else 'Çeşitli teknolojiler'}
-    - **Anahtar Kelimeler:** {keywords if keywords else 'Yenilikçi çözümler'}
-    - **Zorluk Seviyesi:** {difficulty if difficulty else 'Uygun seviye'}
-    - **Proje Türü:** {project_type if project_type else 'Esnek'}
-    - **Süre:** {timeline} hafta
-    - **Karmaşıklık:** {complexity}/10 ({complexity_desc})
-    
-    ## KAPSAMLI PROJE REHBERİ OLUŞTUR:
-    
-    Aşağıdaki formatı takip ederek, her bölümü mümkün olduğunca detaylı şekilde doldur:
-    
-    # 🚀 [Yaratıcı ve Çekici Proje Başlığı]
-    
-    ## 📋 Proje Genel Bakış
-    
-    ### 🎯 Problem Tanımı ve Çözüm
-    - Hangi gerçek dünya problemini çözüyor?
-    - Mevcut çözümlerden farkı nedir?
-    - Neden bu proje önemli ve değerli?
-    
-    ### 🌟 Proje Vizyonu
-    - Projenin uzun vadeli hedefi
-    - Başarı kriterleri
-    - Proje tamamlandığında elde edilecek kazanımlar
-    
-    ## 🎯 Detaylı Proje Hedefleri
-    
-    ### Ana Hedefler:
-    - [ ] [Hedef 1 - Spesifik ve ölçülebilir]
-    - [ ] [Hedef 2 - Spesifik ve ölçülebilir]
-    - [ ] [Hedef 3 - Spesifik ve ölçülebilir]
-    
-    ### İkincil Hedefler:
-    - [ ] [Bonus özellik 1]
-    - [ ] [Bonus özellik 2]
-    
-    ## 👥 Hedef Kitle ve Kullanım Senaryoları
-    
-    ### Birincil Kullanıcılar:
-    - **Profil:** [Detaylı kullanıcı profili]
-    - **İhtiyaçlar:** [Kullanıcı ihtiyaçları]
-    - **Kullanım Sıklığı:** [Ne sıklıkla kullanacaklar]
-    
-    ### Kullanım Senaryoları:
-    1. **Senaryo 1:** [Detaylı kullanım senaryosu]
-    2. **Senaryo 2:** [Detaylı kullanım senaryosu]
-    3. **Senaryo 3:** [Detaylı kullanım senaryosu]
-    
-    ## 🏗️ Teknik Mimari ve Teknoloji Yığını
-    
-    ### Önerilen Teknolojiler:
-    
-    #### Frontend:
-    - **Ana Teknoloji:** [Teknoloji adı]
-    - **Neden bu teknoloji:** [Detaylı açıklama]
-    - **Alternatifler:** [Diğer seçenekler]
-    
-    #### Backend:
-    - **Ana Teknoloji:** [Teknoloji adı]
-    - **Neden bu teknoloji:** [Detaylı açıklama]
-    - **Alternatifler:** [Diğer seçenekler]
-    
-    #### Veritabanı:
-    - **Ana Teknoloji:** [Teknoloji adı]
-    - **Neden bu teknoloji:** [Detaylı açıklama]
-    - **Veri modeli:** [Temel veri yapısı]
-    
-    #### Ek Araçlar ve Servisler:
-    - **Geliştirme Araçları:** [IDE, Version Control, vb.]
-    - **Dağıtım:** [Hosting, CI/CD]
-    - **Monitoring:** [Analitik, hata takibi]
-    
-    ## 📋 Özellik Listesi ve Fonksiyonel Gereksinimler
-    
-    ### Temel Özellikler (MVP):
-    1. **[Özellik 1]**
-       - Açıklama: [Detaylı açıklama]
-       - Teknik gereksinimler: [Teknik detaylar]
-       - Kabul kriterleri: [Test edilebilir kriterler]
-    
-    2. **[Özellik 2]**
-       - Açıklama: [Detaylı açıklama]
-       - Teknik gereksinimler: [Teknik detaylar]
-       - Kabul kriterleri: [Test edilebilir kriterler]
-    
-    ### Gelişmiş Özellikler:
-    1. **[Gelişmiş Özellik 1]**
-       - Açıklama: [Detaylı açıklama]
-       - Önkoşullar: [Hangi temel özellikler gerekli]
-    
-    ## 🗓️ Detaylı Geliştirme Yol Haritası
-    
-    ### Faz 1: Planlama ve Kurulum ({timeline//4} hafta)
-    **Hafta 1-{timeline//4}:**
-    - [ ] Proje kurulumu ve geliştirme ortamı hazırlama
-    - [ ] Teknik araştırma ve teknoloji seçimi
-    - [ ] Proje yapısı ve mimari tasarımı
-    - [ ] Veritabanı tasarımı ve modelleme
-    - [ ] UI/UX wireframe ve mockup'lar
-    
-    **Teslim Edilecekler:**
-    - Proje kurulum dokümantasyonu
-    - Teknik spesifikasyon dökümanı
-    - Veritabanı şeması
-    - UI mockup'ları
-    
-    ### Faz 2: Temel Geliştirme ({timeline//2} hafta)
-    **Hafta {timeline//4 + 1}-{timeline//2 + timeline//4}:**
-    - [ ] Backend API geliştirme
-    - [ ] Veritabanı entegrasyonu
-    - [ ] Temel frontend arayüzü
-    - [ ] Kullanıcı kimlik doğrulama sistemi
-    - [ ] Temel CRUD operasyonları
-    
-    **Teslim Edilecekler:**
-    - Çalışan MVP versiyonu
-    - API dokümantasyonu
-    - Temel test senaryoları
-    
-    ### Faz 3: Özellik Geliştirme ({timeline//4} hafta)
-    **Hafta {timeline//2 + timeline//4 + 1}-{timeline - timeline//4}:**
-    - [ ] İleri seviye özellikler
-    - [ ] Kullanıcı deneyimi iyileştirmeleri
-    - [ ] Performans optimizasyonları
-    - [ ] Güvenlik testleri
-    - [ ] Responsive tasarım
-    
-    **Teslim Edilecekler:**
-    - Tam özellikli uygulama
-    - Performans test raporları
-    - Güvenlik analizi
-    
-    ### Faz 4: Test ve Dağıtım ({timeline//4} hafta)
-    **Hafta {timeline - timeline//4 + 1}-{timeline}:**
-    - [ ] Kapsamlı test senaryoları
-    - [ ] Bug düzeltmeleri
-    - [ ] Deployment hazırlığı
-    - [ ] Dokümantasyon tamamlama
-    - [ ] Kullanıcı kılavuzu hazırlama
-    
-    **Teslim Edilecekler:**
-    - Production-ready uygulama
-    - Tam dokümantasyon
-    - Kullanıcı kılavuzu
-    - Sunum materyalleri
-    
-    ## 📚 Kapsamlı Öğrenme Kaynakları
-    
-    ### Temel Kavramlar:
-    - **[Teknoloji 1] için kaynaklar:**
-      - Resmi dokümantasyon: [Link]
-      - Önerilen kurslar: [Kurs isimleri]
-      - Pratik projeler: [Örnek projeler]
-    
-    ### İleri Seviye Konular:
-    - **Mimari ve Tasarım:**
-      - Clean Architecture
-      - Design Patterns
-      - SOLID Principles
-    
-    ### Pratik Kaynaklar:
-    - GitHub repositories: [Örnek projeler]
-    - YouTube channels: [Önerilen kanallar]
-    - Blog posts: [Yararlı blog yazıları]
-    - Books: [Önerilen kitaplar]
-    
-    ## ⚠️ Potansiyel Zorluklar ve Çözümler
-    
-    ### Teknik Zorluklar:
-    1. **[Zorluk 1]**
-       - Problem: [Detaylı açıklama]
-       - Çözüm: [Önerilen çözüm]
-       - Alternatif: [Plan B]
-    
-    ### Zaman Yönetimi:
-    - **Risk:** [Potansiyel gecikme nedeni]
-    - **Önlem:** [Önleyici tedbirler]
-    
-    ## 🎯 Başarı Metrikleri ve Değerlendirme
-    
-    ### Teknik Metrikler:
-    - [ ] Kod kalitesi (Code coverage, linting)
-    - [ ] Performans (Yükleme süresi, response time)
-    - [ ] Güvenlik (Vulnerability scanning)
-    
-    ### Kullanıcı Deneyimi:
-    - [ ] Kullanılabilirlik testleri
-    - [ ] Kullanıcı geri bildirimleri
-    - [ ] Erişilebilirlik standartları
-    
-    ## 🚀 Gelecek Geliştirmeler ve Sürüm Planı
-    
-    ### Versiyon 2.0 Özellikler:
-    - [Gelecek özellik 1]
-    - [Gelecek özellik 2]
-    
-    ### Ölçeklenebilirlik:
-    - [Büyüme planı]
-    - [Teknik iyileştirmeler]
-    
-    ## 💡 Bonus İpuçları ve Öneriler
-    
-    ### Geliştirme Sürecinde:
-    - Git kullanımı ve branch stratejisi
-    - Code review süreci
-    - Continuous Integration/Deployment
-    
-    ### Portfolyo için:
-    - Demo video hazırlama
-    - GitHub README optimizasyonu
-    - LinkedIn paylaşım stratejisi
-    
-    ---
-    
-    **Not:** Bu proje rehberi, {difficulty} seviyesindeki bir öğrenci için {timeline} haftalık sürede tamamlanabilecek şekilde tasarlanmıştır. Her faz sonunda ara değerlendirmeler yaparak ilerlemeyi takip etmeniz önerilir.
-    
-    **Önemli:** Proje geliştirme sürecinde karşılaştığınız sorunlar için Stack Overflow, GitHub Issues ve ilgili topluluk forumlarını aktif olarak kullanın. Mentorship ve code review için deneyimli geliştiricilerden destek almayı ihmal etmeyin.
-    """
+You are a senior software architect, project manager, and technical mentor with 15+ years of experience. You need to create not just a project idea, but a complete project guide and implementation plan for students. Your response should be professional, detailed, and actionable.
+
+## Student Profile and Needs:
+- **Detailed Project Description:** {detailed_info if detailed_info else 'The student is looking for a general project idea'}
+- **Targeted Categories:** {', '.join(categories) if categories else 'Open'}
+- **Areas of Interest:** {', '.join(interests) if interests else 'Various technologies'}
+- **Keywords:** {keywords if keywords else 'Innovative solutions'}
+- **Difficulty Level:** {difficulty if difficulty else 'Appropriate level'}
+- **Project Type:** {project_type if project_type else 'Flexible'}
+- **Timeline:** {timeline} weeks
+- **Complexity:** {complexity}/10 ({complexity_desc})
+
+## CREATE A COMPREHENSIVE PROJECT GUIDE:
+
+Follow the format below and fill in each section as detailed as possible:
+
+# 🚀 [Creative and Catchy Project Title]
+
+## 📋 Project Overview
+
+### 🎯 Problem Statement and Solution
+- What real-world problem does it solve?
+- How is it different from existing solutions?
+- Why is this project important and valuable?
+
+### 🌟 Project Vision
+- Long-term goal of the project
+- Success criteria
+- Achievements upon project completion
+
+## 🎯 Detailed Project Objectives
+
+### Main Objectives:
+- [ ] [Objective 1 - Specific and measurable]
+- [ ] [Objective 2 - Specific and measurable]
+- [ ] [Objective 3 - Specific and measurable]
+
+### Secondary Objectives:
+- [ ] [Bonus feature 1]
+- [ ] [Bonus feature 2]
+
+## 👥 Target Audience and Use Cases
+
+### Primary Users:
+- **Profile:** [Detailed user profile]
+- **Needs:** [User needs]
+- **Usage Frequency:** [How often will they use it]
+
+### Use Cases:
+1. **Scenario 1:** [Detailed use case]
+2. **Scenario 2:** [Detailed use case]
+3. **Scenario 3:** [Detailed use case]
+
+## 🏗️ Technical Architecture and Technology Stack
+
+### Recommended Technologies:
+
+#### Frontend:
+- **Main Technology:** [Technology name]
+- **Why this technology:** [Detailed explanation]
+- **Alternatives:** [Other options]
+
+#### Backend:
+- **Main Technology:** [Technology name]
+- **Why this technology:** [Detailed explanation]
+- **Alternatives:** [Other options]
+
+#### Database:
+- **Main Technology:** [Technology name]
+- **Why this technology:** [Detailed explanation]
+- **Data model:** [Basic data structure]
+
+#### Additional Tools and Services:
+- **Development Tools:** [IDE, Version Control, etc.]
+- **Deployment:** [Hosting, CI/CD]
+- **Monitoring:** [Analytics, error tracking]
+
+## 📋 Feature List and Functional Requirements
+
+### Core Features (MVP):
+1. **[Feature 1]**
+   - Description: [Detailed description]
+   - Technical requirements: [Technical details]
+   - Acceptance criteria: [Testable criteria]
+
+2. **[Feature 2]**
+   - Description: [Detailed description]
+   - Technical requirements: [Technical details]
+   - Acceptance criteria: [Testable criteria]
+
+### Advanced Features:
+1. **[Advanced Feature 1]**
+   - Description: [Detailed description]
+   - Prerequisites: [Which core features are required]
+
+## 🗓️ Detailed Development Roadmap
+
+### Phase 1: Planning and Setup (**Weeks 1-{timeline//4}:**)
+- [ ] Project setup and development environment preparation
+- [ ] Technical research and technology selection
+- [ ] Project structure and architecture design
+- [ ] Database design and modeling
+- [ ] UI/UX wireframes and mockups
+
+**Deliverables:**
+- Project setup documentation
+- Technical specification document
+- Database schema
+- UI mockups
+
+### Phase 2: Core Development ({timeline//2} weeks)
+**Weeks {timeline//4 + 1}-{timeline//2 + timeline//4}:**
+- [ ] Backend API development
+- [ ] Database integration
+- [ ] Basic frontend interface
+- [ ] User authentication system
+- [ ] Basic CRUD operations
+
+**Deliverables:**
+- Working MVP version
+- API documentation
+- Basic test scenarios
+
+### Phase 3: Feature Development ({timeline//4} weeks)
+**Weeks {timeline//2 + timeline//4 + 1}-{timeline - timeline//4}:**
+- [ ] Advanced features
+- [ ] User experience improvements
+- [ ] Performance optimizations
+- [ ] Security testing
+- [ ] Responsive design
+
+**Deliverables:**
+- Fully featured application
+- Performance test reports
+- Security analysis
+
+### Phase 4: Testing and Deployment ({timeline//4} weeks)
+**Weeks {timeline - timeline//4 + 1}-{timeline}:**
+- [ ] Comprehensive test scenarios
+- [ ] Bug fixes
+- [ ] Deployment preparation
+- [ ] Complete documentation
+- [ ] User guide preparation
+
+**Deliverables:**
+- Production-ready application
+- Complete documentation
+- User guide
+- Presentation materials
+
+## 📚 Comprehensive Learning Resources
+
+### Core Concepts:
+- **Resources for [Technology 1]:**
+  - Official documentation: [Link]
+  - Recommended courses: [Course names]
+  - Practice projects: [Sample projects]
+
+### Advanced Topics:
+- **Architecture and Design:**
+  - Clean Architecture
+  - Design Patterns
+  - SOLID Principles
+
+### Practical Resources:
+- GitHub repositories: [Sample projects]
+- YouTube channels: [Recommended channels]
+- Blog posts: [Useful blog posts]
+- Books: [Recommended books]
+
+## ⚠️ Potential Challenges and Solutions
+
+### Technical Challenges:
+1. **[Challenge 1]**
+   - Problem: [Detailed explanation]
+   - Solution: [Recommended solution]
+   - Alternative: [Plan B]
+
+### Time Management:
+- **Risk:** [Potential cause of delay]
+- **Precaution:** [Preventive measures]
+
+## 🎯 Success Metrics and Evaluation
+
+### Technical Metrics:
+- [ ] Code quality (Code coverage, linting)
+- [ ] Performance (Load time, response time)
+- [ ] Security (Vulnerability scanning)
+
+### User Experience:
+- [ ] Usability testing
+- [ ] User feedback
+- [ ] Accessibility standards
+
+## 🚀 Future Improvements and Release Plan
+
+### Version 2.0 Features:
+- [Future feature 1]
+- [Future feature 2]
+
+### Scalability:
+- [Growth plan]
+- [Technical improvements]
+
+## 💡 Bonus Tips and Recommendations
+
+### During Development:
+- Using Git and branch strategy
+- Code review process
+- Continuous Integration/Deployment
+
+### For Portfolio:
+- Preparing a demo video
+- GitHub README optimization
+- LinkedIn sharing strategy
+
+---
+
+**Note:** This project guide is a template. 
+
+**Important:** For any issues encountered during project development, actively use Stack Overflow, GitHub Issues, and relevant community forums. Don't hesitate to seek mentorship and code review from experienced developers.
+"""
     
     return prompt
 
@@ -332,95 +331,95 @@ def create_chat_prompt(message: str, project_context: str = None) -> str:
     """
     if project_context:
         prompt = f"""
-        Sen deneyimli bir yazılım geliştirme mentoru ve proje danışmanısın. 15+ yıl endüstri deneyimin var ve öğrencilere teknik konularda rehberlik etme konusunda uzmansın.
-        
-        ## Proje Bağlamı:
-        Daha önce aşağıdaki detaylı proje rehberini oluşturdun:
-        
-        {project_context}
-        
-        ## Öğrenci Sorusu:
-        "{message}"
-        
-        ## Yanıt Formatı ve Beklentiler:
-        
-        Bu soruyu Türkçe olarak, yukarıdaki proje bağlamında yanıtla. Yanıtın şu kriterleri karşılamalı:
-        
-        ### 1. Kapsamlı ve Detaylı Olmalı:
-        - Sadece kısa cevaplar verme, konuyu derinlemesine açıkla
-        - Örnekler ve kod snippet'leri ekle (gerektiğinde)
-        - Alternatif yaklaşımları da belirt
-        
-        ### 2. Pratik ve Uygulanabilir Olmalı:
-        - Adım adım talimatlar ver
-        - Hangi araçları kullanacağını belirt
-        - Potansiyel sorunları ve çözümlerini açıkla
-        
-        ### 3. Eğitici Olmalı:
-        - Neden bu yaklaşımı önerdiğini açıkla
-        - İlgili kavramları ve terminolojiyi öğret
-        - Ek öğrenme kaynakları öner
-        
-        ### 4. Motivasyonel Olmalı:
-        - Olumlu ve destekleyici bir ton kullan
-        - Öğrencinin başarabileceğine dair güven ver
-        - Zorluklarla karşılaştığında nasıl üstesinden gelebileceğini açıkla
-        
-        ### 5. Yapılandırılmış Olmalı:
-        - Başlıklar ve alt başlıklar kullan
-        - Madde işaretleri ve numaralı listeler kullan
-        - Önemli noktaları vurgula
-        
-        Teknik terimler için gerektiğinde İngilizce karşılıklarını parantez içinde belirt. Yanıtının sonuna ilgili ek sorular öner ki öğrenci daha fazla bilgi alabilsin.
-        
-        **Önemli:** Yanıtın minimum 200 kelime olmalı ve konuyu gerçekten derinlemesine ele almalı. Yüzeysel cevaplar verme.
-        """
+You are an experienced software development mentor and project consultant with 15+ years of industry experience, specializing in guiding students on technical topics.
+
+## Project Context:
+You have previously created the following detailed project guide:
+
+{project_context}
+
+## Student Question:
+"{message}"
+
+## Response Format and Expectations:
+
+Answer this question in English, in the context of the above project. Your response should meet these criteria:
+
+### 1. Comprehensive and Detailed:
+- Do not give only short answers, explain the topic in depth
+- Add examples and code snippets (when necessary)
+- Mention alternative approaches as well
+
+### 2. Practical and Actionable:
+- Provide step-by-step instructions
+- Specify which tools to use
+- Explain potential issues and solutions
+
+### 3. Educational:
+- Explain why you recommend this approach
+- Teach relevant concepts and terminology
+- Suggest additional learning resources
+
+### 4. Motivational:
+- Use a positive and supportive tone
+- Give confidence that the student can succeed
+- Explain how to overcome challenges
+
+### 5. Structured:
+- Use headings and subheadings
+- Use bullet points and numbered lists
+- Emphasize important points
+
+For technical terms, provide the English equivalent in parentheses when necessary. At the end of your response, suggest related follow-up questions the student can ask for more information.
+
+**Important:** Your response should be at least 200 words and truly cover the topic in depth. Do not give superficial answers.
+"""
     else:
         prompt = f"""
-        Sen deneyimli bir yazılım geliştirme mentoru ve proje danışmanısın. 15+ yıl endüstri deneyimin var ve öğrencilere teknik konularda rehberlik etme konusunda uzmansın.
-        
-        ## Öğrenci Sorusu:
-        "{message}"
-        
-        ## Yanıt Formatı ve Beklentiler:
-        
-        Bu soruyu Türkçe olarak yanıtla. Yanıtın şu kriterleri karşılamalı:
-        
-        ### 1. Kapsamlı ve Detaylı Olmalı:
-        - Sadece kısa cevaplar verme, konuyu derinlemesine açıkla
-        - Örnekler ve kod snippet'leri ekle (gerektiğinde)
-        - Farklı yaklaşımları ve seçenekleri belirt
-        
-        ### 2. Pratik ve Uygulanabilir Olmalı:
-        - Adım adım talimatlar ver
-        - Hangi araçları ve teknolojileri kullanacağını belirt
-        - Başlangıç seviyesinden ileri seviyeye kadar rehberlik et
-        
-        ### 3. Eğitici Olmalı:
-        - Temel kavramları açıkla
-        - Neden bu yaklaşımları önerdiğini belirt
-        - İlgili terminolojiyi öğret
-        - Ek öğrenme kaynakları öner
-        
-        ### 4. Motivasyonel Olmalı:
-        - Olumlu ve destekleyici bir ton kullan
-        - Öğrencinin başarabileceğine dair güven ver
-        - Karmaşık konuları basit adımlara böl
-        
-        ### 5. Yapılandırılmış Olmalı:
-        - Başlıklar ve alt başlıklar kullan
-        - Madde işaretleri ve numaralı listeler kullan
-        - Önemli noktaları **kalın** yazı ile vurgula
-        
-        ### 6. Proje Odaklı Olmalı:
-        - Eğer mümkünse, proje fikirleri öner
-        - Gerçek dünya uygulamalarına örnekler ver
-        - Portfolyo geliştirme önerileri sun
-        
-        Teknik terimler için gerektiğinde İngilizce karşılıklarını parantez içinde belirt. Yanıtının sonuna öğrencinin daha fazla bilgi alabileceği ilgili sorular öner.
-        
-        **Önemli:** Yanıtın minimum 250 kelime olmalı ve konuyu gerçekten derinlemesine ele almalı. Yüzeysel cevaplar verme, her zaman detaylı ve öğretici ol.
-        """
+You are an experienced software development mentor and project consultant with 15+ years of industry experience, specializing in guiding students on technical topics.
+
+## Student Question:
+"{message}"
+
+## Response Format and Expectations:
+
+Answer this question in English. Your response should meet these criteria:
+
+### 1. Comprehensive and Detailed:
+- Do not give only short answers, explain the topic in depth
+- Add examples and code snippets (when necessary)
+- Mention different approaches and options
+
+### 2. Practical and Actionable:
+- Provide step-by-step instructions
+- Specify which tools and technologies to use
+- Guide from beginner to advanced level
+
+### 3. Educational:
+- Explain core concepts
+- State why you recommend these approaches
+- Teach relevant terminology
+- Suggest additional learning resources
+
+### 4. Motivational:
+- Use a positive and supportive tone
+- Give confidence that the student can succeed
+- Break down complex topics into simple steps
+
+### 5. Structured:
+- Use headings and subheadings
+- Use bullet points and numbered lists
+- Emphasize important points in **bold**
+
+### 6. Project-Oriented:
+- If possible, suggest project ideas
+- Give examples of real-world applications
+- Offer portfolio development suggestions
+
+For technical terms, provide the English equivalent in parentheses when necessary. At the end of your response, suggest related follow-up questions the student can ask for more information.
+
+**Important:** Your response should be at least 250 words and truly cover the topic in depth. Do not give superficial answers; always be detailed and educational.
+"""
     
     return prompt
 
@@ -489,7 +488,7 @@ def export_to_markdown(project_data: Dict[str, Any], file_path: str = None) -> O
     """
     try:
         content = project_data.get("content", "")
-        title = project_data.get("title", "Proje Önerisi")
+        title = project_data.get("title", "Project Suggestion")
         
         if not file_path:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -518,7 +517,7 @@ def export_to_pdf(project_data: Dict[str, Any], file_path: str = None) -> Option
         # This is a placeholder - in a real implementation, you would use a PDF library
         # such as reportlab, fpdf, or weasyprint to convert the content to PDF
         content = project_data.get("content", "")
-        title = project_data.get("title", "Proje Önerisi")
+        title = project_data.get("title", "Project Suggestion")
         
         if not file_path:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -542,9 +541,9 @@ def extract_title_from_content(content: str) -> str:
         str: Extracted title or default title
     """
     try:
-        # Look for a title in the format "### 1. Proje Başlığı" followed by text
+        # Look for a title in the format "### 1. Project Title" followed by text
         import re
-        title_match = re.search(r'#+\s*1\.\s*Proje\s*Başlığı\s*\n+([^\n#]+)', content)
+        title_match = re.search(r'#+\s*1\.\s*Project\s*Title\s*\n+([^\n#]+)', content)
         if title_match:
             return title_match.group(1).strip()
         
@@ -553,10 +552,10 @@ def extract_title_from_content(content: str) -> str:
         if heading_match:
             return heading_match.group(1).strip()
         
-        return "Proje Önerisi"
+        return "Project Suggestion"
     except Exception as e:
         logger.error(f"Error extracting title: {e}")
-        return "Proje Önerisi"
+        return "Project Suggestion"
 
 def get_download_link(content: str, filename: str, text: str) -> str:
     """
